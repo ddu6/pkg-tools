@@ -1,0 +1,25 @@
+{
+  "name": "@ddu6/pkg-tools",
+  "version": "0.0.0",
+  "description": "Package Tools",
+  "bin": {
+    "pkg": "dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddu6/pkg-tools.git"
+  },
+  "author": "ddu6",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ddu6/pkg-tools/issues"
+  },
+  "homepage": "https://github.com/ddu6/pkg-tools#readme",
+  "engines": {
+    "node": "^14.0.0",
+    "npm": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.3"
+  }
+}
