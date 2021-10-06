@@ -43,7 +43,7 @@ if(existsSync('css/')){
     let out=''
     if(existsSync('icons/')){
         names.push('allIcons')
-        out+='import {all as allIcons} from "./icons"'
+        out+='import {all as allIcons} from "./icons"\n'
     }
     for(const file of readdirSync('css')){
         const name=file.split('.')[1].replace(/-/g,'_')
