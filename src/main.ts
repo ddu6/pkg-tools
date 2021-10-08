@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'fs'
 if(!existsSync('src/')){
-    throw new Error('wrong dir')
+    throw new Error('Wrong dir')
 }
 if(!existsSync('src/lib/')){
     mkdirSync('src/lib/')
@@ -35,6 +35,9 @@ if(existsSync('icons/')){
             readFileSync('icons/'+file).toString('base64')
         }")}.show-icon.${name}::before{font-family:"${name}";content:"A"}'\n`
     }
+    if(vnames.length===0){
+        throw new Error('Empty icons')
+    }
     out+=`export const all=${vnames.join('+')}`
     writeFileSync('src/lib/icons.ts',out)
 }
@@ -51,6 +54,9 @@ if(existsSync('css/')){
         out+=`export const ${name}=${
             JSON.stringify(readFileSync('css/'+file,{encoding:'utf8'}))
         }\n`
+    }
+    if(names.length===0){
+        throw new Error('Empty css')
     }
     out+=`export const all=${names.join('+')}`
     writeFileSync('src/lib/css.ts',out)

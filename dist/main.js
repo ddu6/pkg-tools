@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 if (!(0, fs_1.existsSync)('src/')) {
-    throw new Error('wrong dir');
+    throw new Error('Wrong dir');
 }
 if (!(0, fs_1.existsSync)('src/lib/')) {
     (0, fs_1.mkdirSync)('src/lib/');
@@ -34,6 +34,9 @@ if ((0, fs_1.existsSync)('icons/')) {
         vnames.push(vname);
         out += `export const ${vname}='@font-face{font-family:"${name}";src:url("data:font/${format};base64,${(0, fs_1.readFileSync)('icons/' + file).toString('base64')}")}.show-icon.${name}::before{font-family:"${name}";content:"A"}'\n`;
     }
+    if (vnames.length === 0) {
+        throw new Error('Empty icons');
+    }
     out += `export const all=${vnames.join('+')}`;
     (0, fs_1.writeFileSync)('src/lib/icons.ts', out);
 }
@@ -48,6 +51,9 @@ if ((0, fs_1.existsSync)('css/')) {
         const name = file.split('.')[1].replace(/-/g, '_');
         names.push(name);
         out += `export const ${name}=${JSON.stringify((0, fs_1.readFileSync)('css/' + file, { encoding: 'utf8' }))}\n`;
+    }
+    if (names.length === 0) {
+        throw new Error('Empty css');
     }
     out += `export const all=${names.join('+')}`;
     (0, fs_1.writeFileSync)('src/lib/css.ts', out);
