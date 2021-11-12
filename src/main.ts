@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'fs'
+import {existsSync,mkdirSync,readdirSync,readFileSync,unlinkSync,writeFileSync} from 'fs'
 if(!existsSync('src/')){
     throw new Error('Wrong dir')
 }

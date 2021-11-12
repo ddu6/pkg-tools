@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import {existsSync,readdirSync,writeFileSync} from 'fs'
 if(existsSync('icons/')){
     let out=''
