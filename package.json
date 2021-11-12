@@ -3,20 +3,16 @@
   "version": "0.0.6",
   "description": "Package Tools",
   "bin": {
-    "pkg": "dist/main.js"
+    "pkg": "dist/main.js",
+    "semipkg": "dist/semi.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ddu6/pkg-tools.git"
   },
-  "author": "ddu6",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ddu6/pkg-tools/issues"
-  },
-  "homepage": "https://github.com/ddu6/pkg-tools#readme",
   "devDependencies": {
-    "@types/node": "^16.10.3"
+    "@types/node": "^16.11.7"
   },
   "engines": {
     "node": ">=14.0.0",
