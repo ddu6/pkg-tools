@@ -13,7 +13,7 @@ if(!existsSync('src/lib/')){
 if(existsSync('imgs/')){
     let out=''
     for(const file of readdirSync('imgs')){
-        let [name,format]=file.split('.')
+        let [name,format]=file.split('.',2)
         name=name.replace(/-/g,'_')+'_'+format
         if(format==='svg'){
             format='svg+xml'
@@ -28,7 +28,10 @@ if(existsSync('icons/')){
     const vnames:string[]=[]
     let out=''
     for(const file of readdirSync('icons')){
-        const [name,format]=file.split('.')
+        if(file==='main.css'){
+            continue
+        }
+        const [name,format]=file.split('.',2)
         const vname=name.replace(/-/g,'_')
         vnames.push(vname)
         out+=`export const ${vname}='@font-face{font-family:"${name}";src:url("data:font/${format};base64,${
@@ -49,7 +52,7 @@ if(existsSync('css/')){
         out+='import {all as allIcons} from "./icons"\n'
     }
     for(const file of readdirSync('css')){
-        const name=file.split('.')[1].replace(/-/g,'_')
+        const name=file.split('.',2)[1].replace(/-/g,'_')
         names.push(name)
         out+=`export const ${name}=${
             JSON.stringify(readFileSync('css/'+file,{encoding:'utf8'}))
