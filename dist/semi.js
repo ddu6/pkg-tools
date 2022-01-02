@@ -5,6 +5,9 @@ const fs_1 = require("fs");
 if ((0, fs_1.existsSync)('icons/')) {
     let out = '';
     for (const file of (0, fs_1.readdirSync)('icons')) {
+        if (file === 'main.css') {
+            continue;
+        }
         const [name] = file.split('.', 1);
         out += `@font-face{font-family:${name};src:url(${file})}.show-icon.${name}::before{font-family:${name};content:"A"}\n`;
     }
