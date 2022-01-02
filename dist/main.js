@@ -40,7 +40,7 @@ if ((0, fs_1.existsSync)('icons/')) {
     if (vnames.length === 0) {
         throw new Error('Empty icons');
     }
-    out += `export const all = ${vnames.join('+')}`;
+    out += `export const all = ${vnames.join(' + ')}`;
     (0, fs_1.writeFileSync)('src/lib/icons.ts', out);
 }
 if ((0, fs_1.existsSync)('css/')) {
@@ -48,7 +48,7 @@ if ((0, fs_1.existsSync)('css/')) {
     let out = '';
     if ((0, fs_1.existsSync)('icons/')) {
         names.push('allIcons');
-        out += 'import {all as allIcons} from "./icons"\n';
+        out += `import {all as allIcons} from './icons'\n`;
     }
     for (const file of (0, fs_1.readdirSync)('css')) {
         const name = file.split('.', 2)[1].replace(/-/g, '_');
@@ -58,6 +58,6 @@ if ((0, fs_1.existsSync)('css/')) {
     if (names.length === 0) {
         throw new Error('Empty css');
     }
-    out += `export const all = ${names.join('+')}`;
+    out += `export const all = ${names.join(' + ')}`;
     (0, fs_1.writeFileSync)('src/lib/css.ts', out);
 }

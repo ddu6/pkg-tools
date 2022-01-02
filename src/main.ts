@@ -39,7 +39,7 @@ if (existsSync('icons/')) {
     if (vnames.length === 0) {
         throw new Error('Empty icons')
     }
-    out += `export const all = ${vnames.join('+')}`
+    out += `export const all = ${vnames.join(' + ')}`
     writeFileSync('src/lib/icons.ts', out)
 }
 if (existsSync('css/')) {
@@ -47,7 +47,7 @@ if (existsSync('css/')) {
     let out = ''
     if (existsSync('icons/')) {
         names.push('allIcons')
-        out += 'import {all as allIcons} from "./icons"\n'
+        out += `import {all as allIcons} from './icons'\n`
     }
     for (const file of readdirSync('css')) {
         const name = file.split('.', 2)[1].replace(/-/g, '_')
@@ -58,6 +58,6 @@ if (existsSync('css/')) {
     if (names.length === 0) {
         throw new Error('Empty css')
     }
-    out += `export const all = ${names.join('+')}`
+    out += `export const all = ${names.join(' + ')}`
     writeFileSync('src/lib/css.ts', out)
 }
