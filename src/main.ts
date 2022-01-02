@@ -18,8 +18,8 @@ if (existsSync('imgs/')) {
         if (format === 'svg') {
             format = 'svg+xml'
         }
-        out += `export const ${name}="data:image/${format};base64,${readFileSync('imgs/' + file).toString('base64')
-            }"\n`
+        out += `export const ${name} = 'data:image/${format};base64,${readFileSync('imgs/' + file).toString('base64')
+            }'\n`
     }
     writeFileSync('src/lib/imgs.ts', out)
 }
@@ -33,13 +33,13 @@ if (existsSync('icons/')) {
         const [name, format] = file.split('.', 2)
         const vname = name.replace(/-/g, '_')
         vnames.push(vname)
-        out += `export const ${vname}='@font-face{font-family:"${name}";src:url("data:font/${format};base64,${readFileSync('icons/' + file).toString('base64')
-            }")}.show-icon.${name}::before{font-family:"${name}";content:"A"}'\n`
+        out += `export const ${vname} = '@font-face{font-family:${name};src:url("data:font/${format};base64,${readFileSync('icons/' + file).toString('base64')
+            }")}.show-icon.${name}::before{font-family:${name};content:"A"}'\n`
     }
     if (vnames.length === 0) {
         throw new Error('Empty icons')
     }
-    out += `export const all=${vnames.join('+')}`
+    out += `export const all = ${vnames.join('+')}`
     writeFileSync('src/lib/icons.ts', out)
 }
 if (existsSync('css/')) {
@@ -52,12 +52,12 @@ if (existsSync('css/')) {
     for (const file of readdirSync('css')) {
         const name = file.split('.', 2)[1].replace(/-/g, '_')
         names.push(name)
-        out += `export const ${name}=${JSON.stringify(readFileSync('css/' + file, {encoding: 'utf8'}))
+        out += `export const ${name} = ${JSON.stringify(readFileSync('css/' + file, {encoding: 'utf8'}))
             }\n`
     }
     if (names.length === 0) {
         throw new Error('Empty css')
     }
-    out += `export const all=${names.join('+')}`
+    out += `export const all = ${names.join('+')}`
     writeFileSync('src/lib/css.ts', out)
 }

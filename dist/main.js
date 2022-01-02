@@ -21,7 +21,7 @@ if ((0, fs_1.existsSync)('imgs/')) {
         if (format === 'svg') {
             format = 'svg+xml';
         }
-        out += `export const ${name}="data:image/${format};base64,${(0, fs_1.readFileSync)('imgs/' + file).toString('base64')}"\n`;
+        out += `export const ${name} = 'data:image/${format};base64,${(0, fs_1.readFileSync)('imgs/' + file).toString('base64')}'\n`;
     }
     (0, fs_1.writeFileSync)('src/lib/imgs.ts', out);
 }
@@ -35,12 +35,12 @@ if ((0, fs_1.existsSync)('icons/')) {
         const [name, format] = file.split('.', 2);
         const vname = name.replace(/-/g, '_');
         vnames.push(vname);
-        out += `export const ${vname}='@font-face{font-family:"${name}";src:url("data:font/${format};base64,${(0, fs_1.readFileSync)('icons/' + file).toString('base64')}")}.show-icon.${name}::before{font-family:"${name}";content:"A"}'\n`;
+        out += `export const ${vname} = '@font-face{font-family:${name};src:url("data:font/${format};base64,${(0, fs_1.readFileSync)('icons/' + file).toString('base64')}")}.show-icon.${name}::before{font-family:${name};content:"A"}'\n`;
     }
     if (vnames.length === 0) {
         throw new Error('Empty icons');
     }
-    out += `export const all=${vnames.join('+')}`;
+    out += `export const all = ${vnames.join('+')}`;
     (0, fs_1.writeFileSync)('src/lib/icons.ts', out);
 }
 if ((0, fs_1.existsSync)('css/')) {
@@ -53,11 +53,11 @@ if ((0, fs_1.existsSync)('css/')) {
     for (const file of (0, fs_1.readdirSync)('css')) {
         const name = file.split('.', 2)[1].replace(/-/g, '_');
         names.push(name);
-        out += `export const ${name}=${JSON.stringify((0, fs_1.readFileSync)('css/' + file, { encoding: 'utf8' }))}\n`;
+        out += `export const ${name} = ${JSON.stringify((0, fs_1.readFileSync)('css/' + file, { encoding: 'utf8' }))}\n`;
     }
     if (names.length === 0) {
         throw new Error('Empty css');
     }
-    out += `export const all=${names.join('+')}`;
+    out += `export const all = ${names.join('+')}`;
     (0, fs_1.writeFileSync)('src/lib/css.ts', out);
 }
