@@ -1,6 +1,6 @@
 {
   "name": "@ddu6/pkg-tools",
-  "version": "0.0.12",
+  "version": "0.1.0",
   "description": "Package Tools",
   "bin": {
     "pkg-icons": "icons.js"
