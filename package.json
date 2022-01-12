@@ -3,17 +3,13 @@
   "version": "0.0.12",
   "description": "Package Tools",
   "bin": {
-    "pkg": "dist/main.js",
-    "semipkg": "dist/semi.js"
+    "pkg-icons": "icons.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ddu6/pkg-tools.git"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^17.0.6"
-  },
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=8.0.0"
